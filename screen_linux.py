@@ -52,12 +52,12 @@ screen.blit(for_trans, (0,0))
 superx = 0
 x = 1
 alpha = 1
-while True:
+runGame = True
+while runGame:
     if not pygame.mixer.music.get_busy():
         exit()
     for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            exit()
+        if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
             runGame = False
         elif event.type == pygame.KEYUP:
             if event.key == pygame.K_1:
