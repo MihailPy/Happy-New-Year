@@ -33,10 +33,10 @@ for o in range(int(height / 50)):
     for i in range(int(width / 50)):
         pos_gir.append([randint(x-5, x+5), randint(y-5, y+5)])
         if int1 == 1:
-            rgbs.append([*choice(color), 0, 8])
+            rgbs.append([*choice(color), 0, 7.8125])
             int1 = 2
         elif int1 == 2:
-            rgbs.append([*choice(color), 250, -8])
+            rgbs.append([*choice(color), 250, -7.8125])
             int1 = 1
         x += xi
     if xi < 0:
@@ -55,10 +55,12 @@ alpha = 1
 runGame = True
 while runGame:
     if not pygame.mixer.music.get_busy():
+        runGame = False
         exit()
     for event in pygame.event.get():
         if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
             runGame = False
+            exit()
         elif event.type == pygame.KEYUP:
             if event.key == pygame.K_1:
                 pygame.mixer.music.pause()
@@ -79,10 +81,10 @@ while runGame:
     for i in range(len(pos_gir)):
         p = pos_gir[i]
         c = rgbs[i]
-        if c[-2] + 8 > 250:
-            c[-1] = -8
-        elif c[-2] - 8 < 0:
-            c[-1] = 8
+        if c[-2] + 7.8125 > 250:
+            c[-1] = -7.8125
+        elif c[-2] - 7.8125 < 0:
+            c[-1] = 7.8125
         c[-2] += c[-1]
         pygame.draw.circle(box_surface, (c[0:-1]), (p[0],p[1]), 7)
             # upd = 0
